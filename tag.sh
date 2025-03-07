@@ -32,3 +32,6 @@ git push origin :refs/tags/$MINOR_TAG
 git push origin $BRANCH_NAME tag $MAJOR_TAG
 git push origin $BRANCH_NAME tag $MINOR_TAG
 git push origin $BRANCH_NAME tag $PATCH_TAG
+
+git tag --delete $MAJOR_TAG
+git tag --delete $MINOR_TAG
