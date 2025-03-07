@@ -1,1 +1,1 @@
-foo
+add minor breaking change
