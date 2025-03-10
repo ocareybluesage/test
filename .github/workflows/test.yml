@@ -26,3 +26,4 @@ jobs:
           from_branch: main
           target_branch: ${{ steps.branch_name.outputs.branch_name }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: Merge to ${{ steps.branch_name.outputs.branch_name }} from main/master
