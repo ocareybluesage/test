@@ -15,6 +15,10 @@ jobs:
         uses: actions/checkout@master
       - name: "Merge Main into feature branch"
         run: |
+
+          git config --global user.email "ci@example.com"
+          git config --global user.name "CI"
+
           git checkout $GITHUB_BASE_REF
           git pull
           git checkout $GITHUB_HEAD_REF
