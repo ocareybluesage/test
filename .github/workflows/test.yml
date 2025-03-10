@@ -16,14 +16,10 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@master
-      - name: "Merge Main into feature branch"
-        run: |
-
-          git config --global user.email "ci@example.com"
-          git config --global user.name "CI"
-
-          git checkout $GITHUB_BASE_REF
-          git pull
-          git checkout $GITHUB_HEAD_REF
-          git merge $GITHUB_BASE_REF --allow-unrelated-histories
-          git push
+      - name: Merge main to environment branch
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: main
+          target_branch: $GITHUB_HEAD_REF
+          github_token: ${{ secrets.GITHUB_TOKEN }}
