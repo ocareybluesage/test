@@ -16,14 +16,19 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@master
-      - run: |
-          echo "branch_name=$GITHUB_HEAD_REF" >> "$GITHUB_OUTPUT"
-        id: branch_name
-      - name: Merge main to environment branch
+      - name: set from_branch name to output
+        id: from_branch
+        run: |
+          echo "from_branch=$GITHUB_BASE_REF" >> "$GITHUB_OUTPUT"
+      - name: set target branch name to output
+        id: target_branch
+        run: |
+          echo "target_branch=$GITHUB_HEAD_REF" >> "$GITHUB_OUTPUT"
+      - name: Merge to environment branch
         uses: devmasx/merge-branch@master
         with:
           type: now
-          from_branch: main
-          target_branch: ${{ steps.branch_name.outputs.branch_name }}
+          from_branch: ${{ steps.from_branch.outputs.from_branch }}
+          target_branch: ${{ steps.target_branch.outputs.target_branch }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          message: Merge to ${{ steps.branch_name.outputs.branch_name }} from main/master
+          message: Merge to ${{ steps.target_branch.outputs.target_branch }} from ${{ steps.from_branch.outputs.from_branch }}
