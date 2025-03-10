@@ -6,6 +6,8 @@ on:
       - main
 
 jobs:
+  permissions:
+    contents: write
   test:
     if: github.event.pull_request.merged == true
     name: "test"
