@@ -5,9 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
-  permissions:
-    contents: write
   test:
     if: github.event.pull_request.merged == true
     name: "test"
