@@ -18,5 +18,5 @@ jobs:
           git checkout $GITHUB_BASE_REF
           git pull
           git checkout $GITHUB_HEAD_REF
-          git merge $GITHUB_BASE_REF
+          git merge $GITHUB_BASE_REF --allow-unrelated-histories
           git push
